@@ -1,0 +1,75 @@
+.movie-container {
+  background-position: top;
+  background-size: cover;
+  border: solid .1rem wheat;
+  border-radius: .2rem;
+  box-shadow: 0 .3rem 1.2rem #000;
+  display: flex;
+  flex-flow: column;
+  height: 18rem;
+  justify-content: flex-end;
+  margin: 1rem;
+  width: 13rem;
+}
+
+.positive-movie {
+  border: solid .1rem #06582b;
+
+  .movie-name {
+    background-color: rgba(6, 88, 43, .5);
+
+    h5 {
+      color: wheat;
+    }
+  }
+}
+
+.negative-movie {
+  border: solid .1rem #9e0909;
+
+  .movie-name {
+    background-color: rgba(158, 9, 9, .5);
+
+    h5 {
+      color: wheat;
+    }
+  }
+}
+
+.movie-name {
+  align-items: center;
+  background-color: rgba(255, 255, 255, .6);
+  display: flex;
+  font-size: 1.2em;
+  justify-content: space-between;
+  padding: .5rem;
+  text-align: center;
+
+  h5 {
+    color: #131212;
+    margin: 0;
+  }
+}
+
+.movie-picker {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 3rem;
+
+  button {
+    margin: 3rem 0 1rem;
+  }
+}
+
+.thumb-icon {
+  cursor: pointer;
+  display: flex;
+}
+
+.movie-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 50rem;
+}

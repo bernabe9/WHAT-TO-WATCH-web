@@ -1,0 +1,33 @@
+.spinner {
+  height: 4rem;
+  margin: auto;
+  position: relative;
+  width: 4rem;
+
+  .child {
+    animation: sk-doubleBounce 2s infinite ease-in-out;
+    background-color: white;
+    border-radius: 50%;
+    height: 100%;
+    left: 0;
+    opacity: .6;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
+  .second-bounce {
+    animation-delay: -1s;
+  }
+
+  @keyframes sk-doubleBounce {
+    0%,
+    100% {
+      transform: scale(0);
+    }
+
+    50% {
+      transform: scale(1);
+    }
+  }
+}

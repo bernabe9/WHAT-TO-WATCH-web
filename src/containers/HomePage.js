@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const HomePage = () => (
   <div className="home-page">
@@ -7,7 +8,7 @@ const HomePage = () => (
       ¡La diversión está por comenzar! <br />
       Estás a sólo un click de descubrir las películas perfectas para ti...
     </h4>
-    <button>COMENZAR</button>
+    <Link to="/select">COMENZAR</Link>
   </div>
 );
 

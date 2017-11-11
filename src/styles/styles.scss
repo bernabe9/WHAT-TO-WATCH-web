@@ -1,7 +1,60 @@
+@import './spinner.scss';
+@import './movie.scss';
+
 body {
   font-family: 'Saira Semi Condensed', sans-serif;
   font-size: 100%;
   margin: 0;
+}
+
+h1 {
+  color: wheat;
+  font-size: 3em;
+  letter-spacing: .06rem;
+  margin-top: 8rem;
+  text-align: center;
+}
+
+h4 {
+  color: wheat;
+  font-size: 1.6em;
+  font-weight: 300;
+  letter-spacing: .03rem;
+  margin-top: 0;
+  text-align: center;
+}
+
+p {
+  color: wheat;
+  font-size: 1.2em;
+  letter-spacing: .03rem;
+  margin-top: 0;
+  text-align: center;
+}
+
+button,
+a {
+  // background-color: #ed253d;
+  background-color: #ef0e29;
+  border: none;
+  border-radius: .5rem;
+  // box-shadow: 0 3px 0 #a01627;
+  box-shadow: 0 3px 0 #7f0716;
+  color: #ff9aa6;
+  cursor: pointer;
+  font-family: 'Saira Semi Condensed', sans-serif;
+  font-size: 1.4em;
+  padding: .8rem 3rem;
+  text-decoration: none;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    // background-color: #c61b30;
+    background-color: #aa081c;
+  }
 }
 
 .home-page {
@@ -16,57 +69,29 @@ body {
   min-height: 100vh;
   padding: 0 2rem;
 
+  h1,
+  h4,
+  a {
+    animation: fadeInFromNone 1s ease-out;
+  }
+}
+
+.select-page {
+  align-items: center;
+  background:
+    linear-gradient(rgba(0, 0, 0, .75), rgba(0, 0, 0, .75)),
+    /* bottom, image */
+    url('../assets/theatre2.jpeg');
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding: 0 2rem;
+
   h1 {
-    animation: fadeInText 1s ease-out;
-    color: wheat;
-    font-size: 3em;
-    letter-spacing: .06rem;
-    margin-top: 8rem;
-    text-align: center;
-  }
-
-  @keyframes fadeInText {
-    0% {
-      font-size: 0;
-    }
-
-    100% {
-      font-size: 3em;
-    }
-  }
-
-  h4 {
-    animation: fadeInFromNone 1s ease-out;
-    color: wheat;
-    font-size: 1.6em;
-    font-weight: 300;
-    letter-spacing: .03rem;
-    margin-top: 0;
-    text-align: center;
-  }
-
-  button {
-    animation: fadeInFromNone 1s ease-out;
-    // background-color: #ed253d;
-    background-color: #ef0e29;
-    border: none;
-    border-radius: .5rem;
-    // box-shadow: 0 3px 0 #a01627;
-    box-shadow: 0 3px 0 #7f0716;
-    color: #ff9aa6;
-    cursor: pointer;
-    font-family: 'Saira Semi Condensed', sans-serif;
-    font-size: 1.4em;
-    padding: .8rem 3rem;
-
-    &:focus {
-      outline: none;
-    }
-
-    &:hover {
-      // background-color: #c61b30;
-      background-color: #aa081c;
-    }
+    margin-top: 5rem;
   }
 }
 
@@ -118,5 +143,15 @@ body {
   100% {
     display: block;
     opacity: 1;
+  }
+}
+
+@keyframes fadeInText {
+  0% {
+    font-size: 0;
+  }
+
+  100% {
+    font-size: 3em;
   }
 }
