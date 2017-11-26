@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { number, string, func } from 'prop-types';
+import { number, string, func, bool } from 'prop-types';
 import { connect } from 'react-redux';
 
 import ThumbUp from './icons/ThumbUp';
@@ -14,7 +14,7 @@ class Movie extends Component {
   }
 
   render() {
-    const { id, name, poster, ranking, voteMovie } = this.props;
+    const { id, name, poster, ranking, voteMovie, votesEnable } = this.props;
     const { isHover } = this.state;
     const backgroundStyle = {
       backgroundImage: `linear-gradient(rgba(0, 0, 0, ${isHover ? '.75' : '.25'}), rgba(0, 0, 0, ${isHover ? '.75' : '.25'})), url(${poster})`
@@ -40,20 +40,24 @@ class Movie extends Component {
             className="thumb-icon"
             onClick={() => voteMovie(id, false)}
           >
-            <ThumbDown
-              strokeColor={ranking ? 'wheat' : '#9e0909'}
-              fillColor={negative ? '#9e0909' : 'none'}
-            />
+            {votesEnable &&
+              <ThumbDown
+                strokeColor={ranking ? 'wheat' : '#9e0909'}
+                fillColor={negative ? '#9e0909' : 'none'}
+              />
+            }
           </div>
           <h5>{name}</h5>
           <div
             className="thumb-icon"
             onClick={() => voteMovie(id, true)}
           >
-            <ThumbUp
-              strokeColor={ranking ? 'wheat' : '#06582b'}
-              fillColor={positive ? '#06582b' : 'none'}
-            />
+            {votesEnable &&
+              <ThumbUp
+                strokeColor={ranking ? 'wheat' : '#06582b'}
+                fillColor={positive ? '#06582b' : 'none'}
+              />
+            }
           </div>
         </div>
       </div>
@@ -62,12 +66,17 @@ class Movie extends Component {
 }
 
 Movie.propTypes = {
-  id: number.isRequired,
+  id: string,
   name: string.isRequired,
   poster: string.isRequired,
   voteMovie: func.isRequired,
-  ranking: number
+  ranking: number,
+  votesEnable: bool
 };
+
+Movie.defaultProps = {
+  votesEnable: true
+}
 
 const mapDispatch = dispatch => ({
   voteMovie: (id, vote) => dispatch(voteMovie(id, vote))

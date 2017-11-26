@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import Movie from '../components/Movie';
 import Spinner from '../components/common/Spinner';
-import { getMovies } from '../actions/movieActions';
+import { getMovies, sendRatings } from '../actions/movieActions';
 
 class SelectPage extends Component {
   constructor() {
@@ -22,17 +22,19 @@ class SelectPage extends Component {
 
   onSubmit() {
     this.setState({ submitted: true });
-    const { movies } = this.props;
-    const votedMoviesCount = movies.filter(movie => movie.ranking).length;
+    const { movies, sendRatings } = this.props;
+    const votedMovies = movies.filter(movie => movie.ranking);
+    const votedMoviesCount = votedMovies.length;
     if (votedMoviesCount > 4) {
-      // call the endpoint to submit
+      const ratings = votedMovies.map(({ id, ranking }) => ({ movieId: id, rating: ranking }));
+      sendRatings(ratings);
     } else {
       this.setState({ error: 'Upss! Debes calificar al menos 5 películas' });
     }
   }
 
   render() {
-    const { movies, loading } = this.props;
+    const { movies, loading, getMovies } = this.props;
     const { error } = this.state;
 
     return (
@@ -48,6 +50,11 @@ class SelectPage extends Component {
                 <Movie key={movie.id} {...movie} />
               )}
             </div>
+            <div onClick={() => getMovies(true)}>
+              <p className="cargar-mas">
+                Cargar Más
+              </p>
+            </div>
             <button onClick={this.onSubmit}>
               CONTINUAR
             </button>
@@ -62,7 +69,8 @@ class SelectPage extends Component {
 SelectPage.propTypes = {
   movies: array.isRequired,
   loading: bool.isRequired,
-  getMovies: func.isRequired
+  getMovies: func.isRequired,
+  sendRatings: func.isRequired
 };
 
 const mapState = state => ({
@@ -71,7 +79,8 @@ const mapState = state => ({
 });
 
 const mapDispatch = dispatch => ({
-  getMovies: () => dispatch(getMovies())
+  getMovies: append => dispatch(getMovies(append)),
+  sendRatings: ratings => dispatch(sendRatings(ratings))
 });
 
 export default connect(mapState, mapDispatch)(SelectPage);
