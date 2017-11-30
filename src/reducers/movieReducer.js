@@ -6,6 +6,7 @@ export const initialState = Immutable.Map({
   movies: Immutable.List(),
   suggestedMovies: Immutable.List(),
   loading: false,
+  submitting: false,
   userId: undefined
 });
 
@@ -35,15 +36,15 @@ const movieReducer = (state = initialState, action) => {
       return state.set('movies', newMovies);
     }
     case types.SUBMITTING_RATINGS: {
-      return state.set('loading', true);
+      return state.set('submitting', true);
     }
     case types.SUBMIT_RATINGS_SUCCESS: {
       const { userId } = action;
-      const newState = state.set('loading', false);
+      const newState = state.set('submitting', false);
       return newState.set('userId', userId);
     }
     case types.SUBMIT_RATINGS_ERROR: {
-      return state.set('loading', false);
+      return state.set('submitting', false);
     }
     case types.FETCH_RECOMMENDATIONS: {
       return state.set('loading', true);

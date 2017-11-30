@@ -76,7 +76,7 @@ Movie.propTypes = {
 
 Movie.defaultProps = {
   votesEnable: true
-}
+};
 
 const mapDispatch = dispatch => ({
   voteMovie: (id, vote) => dispatch(voteMovie(id, vote))

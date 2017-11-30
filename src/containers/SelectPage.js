@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 
 import Movie from '../components/Movie';
 import Spinner from '../components/common/Spinner';
+import RecommendedMoviesPreview from '../components/common/RecommendedMoviesPreview';
+import ProgressBarLoading from '../components/common/ProgressBarLoading';
 import { getMovies, sendRatings } from '../actions/movieActions';
 
 class SelectPage extends Component {
@@ -34,8 +36,27 @@ class SelectPage extends Component {
   }
 
   render() {
-    const { movies, loading, getMovies } = this.props;
+    const { movies, loading, submitting, getMovies } = this.props;
     const { error } = this.state;
+
+    if (submitting) {
+      return (
+        <div className="select-page">
+          <h1>PROCESANDO TUS CALIFICACIONES...</h1>
+          <ProgressBarLoading estimatedTime={80000} />
+          <h4>Películas más recomendadas</h4>
+          <RecommendedMoviesPreview />
+        </div>
+      );
+    }
+
+    if (submitting) {
+      return (
+        <div className="select-page">
+          <h1>CARGANDO TUS PEFERENCIAS...</h1>
+        </div>
+      );
+    }
 
     return (
       <div className="select-page">
@@ -69,13 +90,15 @@ class SelectPage extends Component {
 SelectPage.propTypes = {
   movies: array.isRequired,
   loading: bool.isRequired,
+  submitting: bool.isRequired,
   getMovies: func.isRequired,
   sendRatings: func.isRequired
 };
 
 const mapState = state => ({
   movies: state.getIn(['movie', 'movies']).toJS(),
-  loading: state.getIn(['movie', 'loading'])
+  loading: state.getIn(['movie', 'loading']),
+  submitting: state.getIn(['movie', 'submitting'])
 });
 
 const mapDispatch = dispatch => ({

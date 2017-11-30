@@ -34,11 +34,9 @@ p {
 
 button,
 a {
-  // background-color: #ed253d;
   background-color: #ef0e29;
   border: none;
   border-radius: .5rem;
-  // box-shadow: 0 3px 0 #a01627;
   box-shadow: 0 3px 0 #7f0716;
   color: #ff9aa6;
   cursor: pointer;
@@ -52,7 +50,6 @@ a {
   }
 
   &:hover {
-    // background-color: #c61b30;
     background-color: #aa081c;
   }
 }
@@ -80,7 +77,6 @@ a {
   align-items: center;
   background:
     linear-gradient(rgba(0, 0, 0, .75), rgba(0, 0, 0, .75)),
-    /* bottom, image */
     url('../assets/theatre2.jpeg');
   background-position: center;
   background-size: cover;
@@ -97,6 +93,31 @@ a {
   .cargar-mas {
     cursor: pointer;
     text-decoration: underline;
+  }
+}
+
+.progress-bar {
+  height: 8px;
+  margin: 2rem 2rem 6rem;
+  position: relative;
+  width: 400px;
+}
+
+.slick-slider {
+  height: 38rem;
+  width: 50rem;
+}
+
+.movie-preview {
+  h6 {
+    color: wheat;
+    font-size: 1.4em;
+    margin: 0;
+    text-align: center;
+  }
+
+  img {
+    margin: 1rem auto;
   }
 }
 
