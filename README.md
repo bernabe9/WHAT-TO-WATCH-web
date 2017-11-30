@@ -2,8 +2,11 @@
 WEBIR 2017 - Facultad de ingeniería UDELAR
 
 Integrantes:
+
 María Lucía Barrero		4.412.531-1
+
 Bernabé González		4.863.201-5
+
 Joaquín Lejtreger		4.550.703-3
 
 ## Requisitos
